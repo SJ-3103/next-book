@@ -1,0 +1,38 @@
+.main-container{
+    background-color: #a9a9a9;
+    display:flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.box-container{
+    display:flex;
+    height: 80vh;
+    width:90vw;
+    h4, h3{
+        text-align: left;
+    }
+    form{
+        background-color: #e6e6e6;
+        width:40vw;
+        display:flex;
+        flex-flow: column;
+        align-items: center;
+        lable{
+            width:30vw;
+            height: 30px;
+            text-align: left;
+        }
+        input{
+            width:30vw;
+            height:30px;
+            text-align: left;
+        }
+    }
+    img{
+        width:50vw;
+    }
+}

@@ -1,0 +1,54 @@
+.bookDetail{
+    height: 100vh;
+    width:100%;
+    background-color: #f2f2f2; 
+}
+navbar{
+    display:flex;
+    justify-content: center;
+    background-color: #d9d9d9;
+}
+
+.container{
+    display:flex;
+    justify-content: space-around;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.bookCover{
+    height:40vh;
+    width:15vw;
+    background-color: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-data{
+    background-color: #cbf1f1;
+    width: 50vw;
+    display: flex;
+    flex-flow: column;
+    // justify-content: space-evenly;
+    #rating-details{
+        list-style: none;
+        display:flex;
+        flex-flow:row;
+        justify-content: space-evenly;
+    }
+}
+
+.geners-data{
+    display:flex;
+    flex-flow:column;
+    background-color: #d9d9d9;
+    width:30vw;
+}
+.comments{
+    width: 60vw;
+    height: 40vh;
+    margin-top: 20px;
+    margin-right: 100px;
+    background-color: #d9d9d9;
+}

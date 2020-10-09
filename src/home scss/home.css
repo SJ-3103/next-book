@@ -1,0 +1,169 @@
+.grid-container {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 500px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto 5fr;
+      grid-template-columns: 1fr auto 5fr;
+}
+
+.grid-container button {
+  margin: 25px;
+}
+
+#shop-now-div {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+/* free ship css starts here*/
+.free-ship {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #efefef;
+  height: 80px;
+}
+
+.flex-props {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* free ship css ends here*/
+.products {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (auto)[7];
+      grid-template-rows: repeat(7, auto);
+  -ms-grid-columns: 10% 80% 10%;
+      grid-template-columns: 10% 80% 10%;
+  background-color: #d9d9d9;
+}
+
+.list-options {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  background-color: #efefef;
+}
+
+.list-options ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style-type: none;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.list-options ul li {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  padding: 10px 0px 10px 0px;
+}
+
+.list-options ul li span {
+  padding: 10px;
+}
+
+.side-icons {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/*objects css starts here*/
+.objects {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.objects p {
+  padding: 10px 10px 10px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.rowwise-this {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.our-products {
+  width: 24%;
+  height: 200px;
+  background-color: #00dcff;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: #c8c8c8;
+}
+/*# sourceMappingURL=home.css.map */
