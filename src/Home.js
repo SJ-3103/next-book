@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
-import './home scss/home.css';
-import Navbar from './components/Navbar';
-import Products from './components/Products'
+import React, { Component } from 'react'
+import './home.scss'
+import bookImage from './images/book.jpeg'
+
+import Navbar from './components/Navbar'
+
+import TrendingProducts from './components/TrendingProducts'
+import BestSellingProducts from './components/BestSellingProducts'
+import NewProducts from './components/NewProducts'
 
 export default class Home extends Component {
     render() {
@@ -21,12 +26,7 @@ class ShopButton extends Component {
     render() {
         return (
             <div className="grid-container" >
-                <div id="shop-now-div">
-                    <span>Discover ethnically </span>
-                    <span>cultivated and Fair-Trade gifts </span>
-                    <button>Shop Now</button>
-                </div>
-                <div>Image Goes Here</div>
+                <img alt="Book Cover goes here" src={bookImage}></img>
             </div>
         )
     }
@@ -58,7 +58,7 @@ class FreeShip extends Component {
 class Main extends Component {
     render() {
         return (
-            <main className="products">
+            <main id="buyNow" className="products">
                 <div className="list-options">
                     <nav>
                         <ul>
@@ -71,11 +71,11 @@ class Main extends Component {
                     </nav>
                 </div>
 
-                <Products title='Trending Products' />
+                <TrendingProducts />
 
-                <Products title='Best Selling Products' />
+                <BestSellingProducts />
 
-                <Products title='New Arrivals' />
+                <NewProducts />
 
 
             </main>

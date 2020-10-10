@@ -1,7 +1,9 @@
 import React, { Component } from "react"
-import './bookDetail scss/main.css'
+import './bookDetails.scss'
+import NavBar from './components/Navbar'
 
-class BookDetail extends Component {
+
+export default class BookDetail extends Component {
     render() {
         return (
             <div className="bookDetail">
@@ -20,15 +22,6 @@ class BookDetail extends Component {
     }
 }
 
-class NavBar extends Component {
-    render() {
-        return (
-            <navbar>
-                <h2>The Navbar</h2>
-            </navbar>
-        )
-    }
-}
 
 class BookData extends Component {
     constructor(props) {
@@ -90,5 +83,3 @@ class Comments extends Component {
         )
     }
 }
-
-export default BookDetail

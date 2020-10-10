@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './register scss/register.css'
+import './register.scss'
 import NavBar from './components/Navbar'
 import axios from 'axios'
 

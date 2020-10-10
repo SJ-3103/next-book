@@ -4,19 +4,32 @@
   "description": "server files for website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon index.js"
+    "transpile": "babel src/ --out-dir dist-server/",
+    "serve": "nodemon dist-server/index.js"
   },
   "author": "shubham jain",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "debug": "^4.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.7",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "validator": "^13.1.17"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { isEmail } = require('validator');
-const bcrypt = require('bcrypt')
+import mongoose from 'mongoose'
+import { isEmail } from 'validator'
+import bcrypt from 'bcrypt'
 
 var registerSchema = new mongoose.Schema({
     firstName: {
@@ -27,12 +27,13 @@ var registerSchema = new mongoose.Schema({
     collection: "registerdata"
 });
 
-// fire a function before saving the data to the database 
-registerSchema.pre('save', async function (next) {
-    var salt = await bcrypt.genSalt()
-    this.password = await bcrypt.hash(this.password, salt)
-    next()
-})
+// fire a function before saving the data to the database
+
+// registerSchema.pre('save', (next) => {
+//     var salt = await bcrypt.genSalt()
+//     this.password = await bcrypt.hash(this.password, salt)
+//     next()
+// })
 
 // loginFunc
 registerSchema.statics.loginFunc = async function (email, password) {
@@ -47,4 +48,4 @@ registerSchema.statics.loginFunc = async function (email, password) {
 
 const Register = mongoose.model('registerdata', registerSchema);
 
-module.exports = Register;
+export default Register

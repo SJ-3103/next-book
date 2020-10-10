@@ -1,6 +1,5 @@
-var Register = require('../model/Register')
-
-var jwt = require('jsonwebtoken')
+import Register from '../model/Register'
+import jwt from 'jsonwebtoken'
 
 function handleError(err) {
     console.log(err.message, err.code)
@@ -27,14 +26,14 @@ function handleError(err) {
     return errors
 }
 
-var maxAge = 3 * 24 * 60 * 60;
+var maxAge = 3 * 24 * 60 * 60
 var createCookie = (id) => {
     return jwt.sign({ id }, 'THIS IS A SECRET', {
         expiresIn: maxAge // in sec
     })
 }
 
-module.exports.registerMethod = async (req, res) => {
+async function RegisterMethod(req, res) {
     var { firstName, lastName, emailId, password } = req.params;
 
     try {
@@ -45,7 +44,7 @@ module.exports.registerMethod = async (req, res) => {
             password: password
         });
         var token = createCookie(register._id)
-        res.cookie('jwt', token, { httpOnly: true, maxAge = maxAge * 1000 })
+        res.cookie('jwt', token, { httpOnly: true })
         res.status(201).send({ user: user._id })
 
     } catch (err) {
@@ -54,17 +53,4 @@ module.exports.registerMethod = async (req, res) => {
     }
 }
 
-// loginMethod 
-module.exports.loginMethod = (req, res) => {
-
-    var { emailId, password } = req.params;
-
-    try {
-        var authUser = await Register.loginFunc(emailId, password)
-        res.status(200).json({ user: user._id })
-    }
-    catch (err) {
-        console.log(err)
-        res.status(400).json({})
-    }
-}
+export default RegisterMethod

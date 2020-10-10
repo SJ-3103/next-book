@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import '../navbar scss/navbar.css'
+import './navbar.scss'
 
 export default class Navbar extends Component {
     render() {
         return (
             <header>
-                <nav className=" navbar">
+                <nav className="navbar">
                     <ul id="menu-left">
                         <li><Link to='/'>Logo</Link></li>
                         <li><Link to='/'>Home</Link></li>
@@ -21,4 +21,4 @@ export default class Navbar extends Component {
             </header>
         )
     }
-} 
+}
