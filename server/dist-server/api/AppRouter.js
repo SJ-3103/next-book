@@ -11,19 +11,19 @@ var _RegisterMethod = _interopRequireDefault(require("../controllers/RegisterMet
 
 var _LoginMethod = _interopRequireDefault(require("../controllers/LoginMethod"));
 
+var _HandleTrending = _interopRequireDefault(require("../controllers/HandleTrending"));
+
+var _HandleBest = _interopRequireDefault(require("../controllers/HandleBest"));
+
+var _HandleNew = _interopRequireDefault(require("../controllers/HandleNew"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = new _express.Router();
+const router = new _express.Router();
 router.post('/api/register/:firstName/:lastName/:emailId/:password', _RegisterMethod.default);
 router.post('/api/login/:emailId/:password', _LoginMethod.default);
-router.get('/api/getDetail', getDetail);
-
-function getDetail(req, res) {
-  console.log(req.body);
-  res.json({
-    msg: 'Getting Details'
-  });
-}
-
+router.get('/api/get/trending', _HandleTrending.default);
+router.get('/api/get/bestselling', _HandleBest.default);
+router.get('/api/get/newarrivals', _HandleNew.default);
 var _default = router;
 exports.default = _default;

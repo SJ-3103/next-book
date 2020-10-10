@@ -4,8 +4,12 @@
   "description": "server files for website",
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all remove transpile serve",
     "transpile": "babel src/ --out-dir dist-server/",
-    "serve": "nodemon dist-server/index.js"
+    "serve": "nodemon dist-server/index.js",
+    "remove": "rimraf dist-server",
+    "convertThis": "npm-run-all remove transpile handle",
+    "handle": "node dist-server/index.js"
   },
   "author": "shubham jain",
   "license": "ISC",
@@ -29,7 +33,14 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-env"
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "10"
+          }
+        }
+      ]
     ]
   }
 }

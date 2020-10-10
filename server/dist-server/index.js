@@ -18,12 +18,12 @@ var db = new _Database.default();
 app.use((0, _morgan.default)('dev'));
 app.use(_express.default.json());
 app.use((0, _cors.default)());
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   next();
 });
 db.mongodbConnect();
 app.use(_AppRouter.default);
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log('App is working on port ' + PORT);
 });

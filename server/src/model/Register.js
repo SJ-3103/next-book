@@ -1,8 +1,8 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { isEmail } from 'validator'
 import bcrypt from 'bcrypt'
 
-var registerSchema = new mongoose.Schema({
+var registerSchema = new Schema({
     firstName: {
         type: String,
         required: [true, 'First name is a required field']
@@ -28,23 +28,10 @@ var registerSchema = new mongoose.Schema({
 });
 
 // fire a function before saving the data to the database
-
-// registerSchema.pre('save', (next) => {
-//     var salt = await bcrypt.genSalt()
-//     this.password = await bcrypt.hash(this.password, salt)
-//     next()
-// })
-
-// loginFunc
-registerSchema.statics.loginFunc = async function (email, password) {
-    var check_user = await this.findOne({ email: email })
-    if (check_user) {
-        var check_password = await bcrypt.compare(password, check_user.password)
-        if (check_password) {
-            return check_password
-        } throw Error('Password is incorrect')
-    } throw Error('User does not exists')
-}
+registerSchema.pre('save', async function () {
+    var salt = await bcrypt.genSalt()
+    this.password = await bcrypt.hash(this.password, salt)
+})
 
 const Register = mongoose.model('registerdata', registerSchema);
 

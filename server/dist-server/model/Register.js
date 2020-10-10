@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _mongoose = _interopRequireDefault(require("mongoose"));
+var _mongoose = _interopRequireWildcard(require("mongoose"));
 
 var _validator = require("validator");
 
@@ -13,11 +13,11 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-var registerSchema = new _mongoose.default.Schema({
+var registerSchema = new _mongoose.Schema({
   firstName: {
     type: String,
     required: [true, 'First name is a required field']
@@ -41,66 +41,13 @@ var registerSchema = new _mongoose.default.Schema({
 }, {
   collection: "registerdata"
 }); // fire a function before saving the data to the database
-// registerSchema.pre('save', (next) => {
-//     var salt = await bcrypt.genSalt()
-//     this.password = await bcrypt.hash(this.password, salt)
-//     next()
-// })
-// loginFunc
 
-registerSchema.statics.loginFunc = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, password) {
-    var check_user, check_password;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return this.findOne({
-              email: email
-            });
+registerSchema.pre('save', async function () {
+  var salt = await _bcrypt.default.genSalt();
+  this.password = await _bcrypt.default.hash(this.password, salt);
+});
 
-          case 2:
-            check_user = _context.sent;
-
-            if (!check_user) {
-              _context.next = 10;
-              break;
-            }
-
-            _context.next = 6;
-            return _bcrypt.default.compare(password, check_user.password);
-
-          case 6:
-            check_password = _context.sent;
-
-            if (!check_password) {
-              _context.next = 9;
-              break;
-            }
-
-            return _context.abrupt("return", check_password);
-
-          case 9:
-            throw Error('Password is incorrect');
-
-          case 10:
-            throw Error('User does not exists');
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function (_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var Register = _mongoose.default.model('registerdata', registerSchema);
+const Register = _mongoose.default.model('registerdata', registerSchema);
 
 var _default = Register;
 exports.default = _default;
