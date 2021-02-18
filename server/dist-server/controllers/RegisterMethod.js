@@ -5,14 +5,45 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _Register = _interopRequireDefault(require("../model/Register"));
+var _UserData = _interopRequireDefault(require("../model/UserData"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+async function RegisterMethod(req, res) {
+  // var { firstName, lastName, emailId, password } = req.body.toString();
+  var {
+    firstName,
+    lastName,
+    emailId,
+    password
+  } = req.body;
+  console.log(req.body);
+
+  try {
+    var userdata = await _UserData.default.create({
+      firstName: firstName,
+      lastName: lastName,
+      email: emailId,
+      password: password
+    });
+    var token = createCookie(userdata._id);
+    res.cookie('jwt', token, {
+      httpOnly: true
+    });
+    res.status(201).send({
+      user: userdata._id
+    });
+  } catch (err) {
+    var errors = handleError(err);
+    console.log(errors);
+    res.status(401).send(errors);
+  }
+}
+
 function handleError(err) {
-  console.log(err.message, err.code);
+  // console.log(err.message, err.code)
   var errors = {
     firstName: '',
     lastName: '',
@@ -20,7 +51,7 @@ function handleError(err) {
     password: ''
   }; // registerdata validation error
 
-  if (err.message.includes('registerdata validation failed')) {
+  if (err.message.includes("userdata validation failed")) {
     Object.values(err.errors).forEach(({
       properties
     }) => {
@@ -46,34 +77,6 @@ var createCookie = id => {
 
   });
 };
-
-async function RegisterMethod(req, res) {
-  var {
-    firstName,
-    lastName,
-    emailId,
-    password
-  } = req.params;
-
-  try {
-    var register = await _Register.default.create({
-      firstName: firstName,
-      lastName: lastName,
-      email: emailId,
-      password: password
-    });
-    var token = createCookie(register._id);
-    res.cookie('jwt', token, {
-      httpOnly: true
-    });
-    res.status(201).send({
-      user: user._id
-    });
-  } catch (err) {
-    var errors = handleError(err);
-    res.status(401).send(errors);
-  }
-}
 
 var _default = RegisterMethod;
 exports.default = _default;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './register.scss'
 import NavBar from './components/Navbar'
-import axios from 'axios'
 
 export default class Register extends Component {
     constructor(props) {
@@ -60,7 +59,10 @@ export default class Register extends Component {
         try {
             // errors may also come from the express server
             // extract them and show them
-            await axios.post(`http://localhost:4000/api/register/${this.state.firstName}/${this.state.lastName}/${this.state.email}/${this.state.password}`)
+            // await fetch(
+
+            // )
+
         } catch (err) {
             console.log(err)
             if (err.message.includes('Network Error')) {

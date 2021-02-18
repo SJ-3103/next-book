@@ -1,16 +1,16 @@
 $select-hover-color : #f9815c;
 $list-option-backgroud: #efefef;
 
-.grid-container{
-    img{
-        max-width: 100%;
-        // max-height: 700px;
-        object-fit: fill;
-    }
+#search-bar{
+    height: 500px;
+    background-image: url('./images/book.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* free ship css starts here*/
-.free-ship {
+.details {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
@@ -26,19 +26,25 @@ $list-option-backgroud: #efefef;
     justify-content: center;
 }
 
+.bold-text{
+    font-weight: bold;
+}
+
+.faded-text{
+    font-weight: normal;
+}
+
 /* free ship css ends here*/
 
 //products starts here
-
 .products {
-    display: grid;
-    grid-template-rows: repeat(7, auto);
-    grid-template-columns: 10% 80% 10%;
-    background-color: #d9d9d9;
+    margin: 0% 10% 0% 10%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
 }
 
 .list-options {
-    grid-column: 2 / 3;
     background-color: $list-option-backgroud;
 
     ul {
@@ -46,7 +52,6 @@ $list-option-backgroud: #efefef;
         flex-direction: row;
         list-style-type: none;
         flex-wrap: nowrap;
-
         li {
             flex-grow: 1;
             text-align: center;
@@ -60,37 +65,6 @@ $list-option-backgroud: #efefef;
     }
 }
 
-.side-icons {
-    padding: 8px;
-    border: 1px solid #ddd;
-}
-
-
-/*objects css starts here*/
-.objects {
-    grid-column: 2 / 3;
-    display: flex;
-    flex-direction: column;
-
-    p {
-        padding: 10px 10px 10px 0px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-.rowwise-this {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.our-products {
-    width: 24%;
-    height: 200px;
-    background-color: #00dcff;
-}
 
 // produts ends here 
 footer {

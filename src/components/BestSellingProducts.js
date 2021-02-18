@@ -1,13 +1,34 @@
+/* 
+    when this component load then:
+    1. call backend api
+    2. save data in some variable
+    3. loop over data
+    4. close the request response loop
+*/
 import React, { Component } from 'react'
 
 export default class BestSellingProducts extends Component {
-    state = {
-        title: 'Best Selling Products'
+    constructor(props) {
+        super(props)
+        this.state = {
+            title: 'Best Selling Products'
+        }
     }
-    value = []
+
+    productsDiv = []
     myFunc() {
         for (let i = 1; i <= 4; i++) {
-            this.value.push(<div className="our-products"></div>)
+            this.productsDiv.push(
+                <div className="our-products">
+                    {/* book img, book title, booka author, book rating */}
+                    <img alt="some text here"></img>
+                    <div id="bookData">
+                        <p>Book Title</p>
+                        <p>Author</p>
+                        <p>Ratings</p>
+                    </div>
+                </div>
+            )
         }
     }
 
@@ -23,7 +44,7 @@ export default class BestSellingProducts extends Component {
                     </span>
                 </p>
                 <div className="rowwise-this">
-                    {this.value}
+                    {this.productsDiv}
                 </div>
             </div>
         )

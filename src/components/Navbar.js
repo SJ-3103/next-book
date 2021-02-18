@@ -13,9 +13,9 @@ export default class Navbar extends Component {
                         <li><Link to='/about'>About Us</Link></li>
                     </ul>
                     <ul id="menu-right">
-                        <li><Link to='/'>My Account</Link></li>
                         <li><Link to='/register'>Register</Link></li>
                         <li><Link to='/'>Sign In</Link></li>
+                        <li><Link to="/shelf">Shelf</Link></li>
                     </ul>
                 </nav>
             </header>

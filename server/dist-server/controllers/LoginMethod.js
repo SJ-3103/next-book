@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _Register = _interopRequireDefault(require("../model/Register"));
+var _UserData = _interopRequireDefault(require("../model/UserData"));
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
@@ -15,10 +15,10 @@ async function LoginMethod(req, res) {
   var {
     emailId,
     password
-  } = req.params;
+  } = req.body;
 
   try {
-    var authUser = await _Register.default.findOne({
+    var authUser = await _UserData.default.findOne({
       email: emailId
     });
 

@@ -2,11 +2,11 @@ import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 
-
 import Database from './Database'
 import AppRouter from './api/AppRouter'
 
 var app = express()
+
 var PORT = 4000;
 
 var db = new Database();

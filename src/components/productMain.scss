@@ -1,0 +1,40 @@
+#title {
+  padding: 10px 10px 10px 0px;
+}
+
+.side-icons {
+  padding: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  height: max-content;
+  position: absolute;
+  top: 30%;
+}
+#left_bt {
+  left: 0;
+}
+#right_bt {
+  right: 0;
+}
+.items {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.book {
+  width: 15%;
+  // border-style: solid;
+  // border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  h3,
+  h4,
+  p {
+    text-align: center;
+    // padding: 0% 2.5% 0% 2.5%;
+  }
+  // img{
+  // padding: 0% 1.5% 0% 1.5%;
+  // }
+}

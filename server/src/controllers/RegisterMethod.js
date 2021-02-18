@@ -1,8 +1,31 @@
-import Register from '../model/Register'
+import UserData from '../model/UserData'
 import jwt from 'jsonwebtoken'
 
+async function RegisterMethod(req, res) {
+    // var { firstName, lastName, emailId, password } = req.body.toString();
+    var { firstName, lastName, emailId, password } = req.body
+    console.log(req.body)
+
+    try {
+        var userdata = await UserData.create({
+            firstName: firstName,
+            lastName: lastName,
+            email: emailId,
+            password: password
+        });
+        var token = createCookie(userdata._id)
+        res.cookie('jwt', token, { httpOnly: true })
+        res.status(201).send({ user: userdata._id })
+
+    } catch (err) {
+        var errors = handleError(err)
+        console.log(errors)
+        res.status(401).send(errors)
+    }
+}
+
 function handleError(err) {
-    console.log(err.message, err.code)
+    // console.log(err.message, err.code)
 
     var errors = {
         firstName: '',
@@ -12,7 +35,7 @@ function handleError(err) {
     }
 
     // registerdata validation error
-    if (err.message.includes('registerdata validation failed')) {
+    if (err.message.includes("userdata validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message
         })
@@ -31,26 +54,6 @@ var createCookie = (id) => {
     return jwt.sign({ id }, 'THIS IS A SECRET', {
         expiresIn: maxAge // in sec
     })
-}
-
-async function RegisterMethod(req, res) {
-    var { firstName, lastName, emailId, password } = req.params;
-
-    try {
-        var register = await Register.create({
-            firstName: firstName,
-            lastName: lastName,
-            email: emailId,
-            password: password
-        });
-        var token = createCookie(register._id)
-        res.cookie('jwt', token, { httpOnly: true })
-        res.status(201).send({ user: user._id })
-
-    } catch (err) {
-        var errors = handleError(err)
-        res.status(401).send(errors)
-    }
 }
 
 export default RegisterMethod
