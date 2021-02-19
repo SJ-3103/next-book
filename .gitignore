@@ -1,14 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# temperary
-/server
 
 # dependencies
 /node_modules
-/server/node_modules
+
 /.pnp
 .pnp.js
-/server/txt files
+
 
 # testing
 /coverage

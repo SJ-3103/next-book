@@ -8,7 +8,7 @@ import HandleBest from '../controllers/HandleBest'
 import HandleNew from '../controllers/HandleNew'
 import AddData from '../controllers/AddData'
 
-var router = Router();
+var router = Router()
 
 // parse application/x-www-form-urlecnoded
 // router.use(bodyParser.urlencoded({ extended: false }))
@@ -23,9 +23,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // router.post('/api/register', jsonParser, RegisterMethod);
 router.post('/api/register', (req, res) => {
-    console.log(req.body)
+  console.log(req.body)
 })
-
 
 router.post('/api/login', urlencodedParser, LoginMethod)
 
