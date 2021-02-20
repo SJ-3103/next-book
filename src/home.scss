@@ -1,74 +1,76 @@
-$select-hover-color : #f9815c;
+$select-hover-color: #f9815c;
 $list-option-backgroud: #efefef;
 
-#search-bar{
-    height: 500px;
-    background-image: url('./images/book.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+#search-bar {
+  height: 500px;
+  background-image: url('./images/book.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* free ship css starts here*/
 .details {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: $list-option-backgroud;
-    height: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: $list-option-backgroud;
+  height: 80px;
 }
 
 .flex-props {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.bold-text{
-    font-weight: bold;
+.bold-text {
+  font-weight: bold;
 }
 
-.faded-text{
-    font-weight: normal;
+.faded-text {
+  font-weight: normal;
 }
 
 /* free ship css ends here*/
 
 //products starts here
 .products {
-    margin: 0% 10% 0% 10%;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
+  margin: 0% 10% 0% 10%;
+  border-width: 1px;
+  // border-color: black;
+  //   border-style: solid;
 }
 
 .list-options {
-    background-color: $list-option-backgroud;
+  background-color: $list-option-backgroud;
 
-    ul {
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        flex-wrap: nowrap;
-        li {
-            flex-grow: 1;
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            padding: 10px 0px 10px 0px;
-            span {
-                padding: 10px;
-            }
-        }
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    flex-wrap: nowrap;
+    li {
+      flex-grow: 1;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      padding: 10px 0px 10px 0px;
+      span {
+        padding: 10px;
+      }
     }
+  }
 }
 
-
-// produts ends here 
+// produts ends here
 footer {
-    width: 100%;
-    height: 100px;
-    background-color: #c8c8c8;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: #c8c8c8;
+  justify-content: center;
+  align-items: center;
 }

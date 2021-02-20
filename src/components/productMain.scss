@@ -22,7 +22,39 @@
   justify-content: space-around;
 }
 
-.book {
+.td_book {
+  width: 15%;
+  // border-style: solid;
+  // border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  h3,
+  h4,
+  p {
+    text-align: center;
+    // padding: 0% 2.5% 0% 2.5%;
+  }
+  // img{
+  // padding: 0% 1.5% 0% 1.5%;
+  // }
+}
+.bp_book {
+  width: 15%;
+  // border-style: solid;
+  // border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  h3,
+  h4,
+  p {
+    text-align: center;
+    // padding: 0% 2.5% 0% 2.5%;
+  }
+  // img{
+  // padding: 0% 1.5% 0% 1.5%;
+  // }
+}
+.np_book {
   width: 15%;
   // border-style: solid;
   // border-width: 1px;

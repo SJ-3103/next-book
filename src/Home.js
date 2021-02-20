@@ -12,7 +12,6 @@ export default class Home extends Component {
       <div className='body'>
         <Navbar />
         <SearchBar />
-        <Details />
         <Main />
         <Footer />
       </div>
@@ -23,31 +22,6 @@ export default class Home extends Component {
 class SearchBar extends Component {
   render() {
     return <div id='search-bar'>{/* search bar to be added */}</div>
-  }
-}
-
-class Details extends Component {
-  render() {
-    return (
-      <div className='details'>
-        <div className='flex-props'>
-          <p className='bold-text'>Free Shipping US</p>
-          <p className='faded-text'>On all order over 250</p>
-        </div>
-        <div className='flex-props'>
-          <p className='bold-text'>Money Guarantee</p>
-          <p className='faded-text'>30 days money back</p>
-        </div>
-        <div className='flex-props'>
-          <p className='bold-text'>Payment Secured</p>
-          <p className='faded-text'>Secure all your payments</p>
-        </div>
-        <div className='flex-props'>
-          <p className='bold-text'>Power Support</p>
-          <p className='faded-text'>Online services 24/7</p>
-        </div>
-      </div>
-    )
   }
 }
 
@@ -122,9 +96,6 @@ class Main extends Component {
             <li>Trending Books</li>
             <li>Best Selling Books</li>
             <li>New Arrivals</li>
-            <li>
-              VIEW ALL<span>&raquo;</span>
-            </li>
           </ul>
         </nav>
         <TrendingProducts values_for_bookblocks={this.JSONData} />
@@ -137,6 +108,6 @@ class Main extends Component {
 
 class Footer extends Component {
   render() {
-    return <footer>Footer goes here</footer>
+    return <footer>Created By Shubham Jain</footer>
   }
 }

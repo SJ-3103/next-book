@@ -8,6 +8,7 @@ export default class NewProducts extends Component {
     super(props)
     this.state = {
       arr: [],
+      class_name: 'np_book',
     }
     this.populate_array()
   }
@@ -22,6 +23,7 @@ export default class NewProducts extends Component {
           bookTitle={props[i]['book_title']}
           bookAuther={props[i]['book_auther']}
           bookRating={props[i]['book_rating']}
+          class_name={this.state.class_name}
         />
       )
     }
@@ -37,7 +39,7 @@ export default class NewProducts extends Component {
   }
 
   showSlide(start_index, end_index) {
-    let slides = document.getElementsByClassName('book')
+    let slides = document.getElementsByClassName(this.state.class_name)
 
     if (start_index > 0 && end_index > slides.length) {
       start_index = 0
@@ -64,7 +66,7 @@ export default class NewProducts extends Component {
   render() {
     return (
       <div className='products-wrapper'>
-        <p id='title'>Trending Products</p>
+        <p id='title'>New Products</p>
         <div className='items'>
           <button
             className='side-icons'
@@ -101,6 +103,7 @@ class BookBlock extends Component {
       bookAuthor: this.props.bookAuther,
       bookURL: book1,
       bookRating: this.props.bookRating,
+      td_book: this.props.class_name,
     }
   }
   extra_css = {
@@ -114,7 +117,7 @@ class BookBlock extends Component {
         animationInDuration={1000}
         animationOutDuration={1000}
         isVisible={true}
-        className='book'
+        className={this.state.td_book}
         style={this.extra_css}
       >
         <img alt='imagcia' src={this.state.bookURL} />
