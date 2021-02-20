@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import './home.scss'
 
 import Navbar from './components/Navbar'
-
 import TrendingProducts from './components/TrendingProducts'
+import BestProducts from './components/BestProducts'
+import NewProducts from './components/NewProducts'
 
 export default class Home extends Component {
   render() {
@@ -127,6 +128,8 @@ class Main extends Component {
           </ul>
         </nav>
         <TrendingProducts values_for_bookblocks={this.JSONData} />
+        <BestProducts values_for_bookblocks={this.JSONData} />
+        <NewProducts values_for_bookblocks={this.JSONData} />
       </main>
     )
   }

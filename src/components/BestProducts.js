@@ -3,7 +3,7 @@ import { Animated } from 'react-animated-css'
 import '../components/productMain.scss'
 import book1 from '../images/book1.jpg'
 
-export default class NewProducts extends Component {
+export default class BestProducts extends Component {
   constructor(props) {
     super(props)
     this.state = {
