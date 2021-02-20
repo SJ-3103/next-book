@@ -1,38 +1,45 @@
-.main-container{
-    background-color: #a9a9a9;
-    display:flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
+.body-c {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(45deg, #49d49d 10%, #a2c7e5 90%);
 }
-
-.box-container{
-    display:flex;
-    height: 80vh;
-    width:90vw;
-    h4, h3{
-        text-align: left;
-    }
-    form{
-        background-color: #e6e6e6;
-        width:40vw;
-        display:flex;
-        flex-flow: column;
-        align-items: center;
-        lable{
-            width:30vw;
-            height: 30px;
-            text-align: left;
-        }
-        input{
-            width:30vw;
-            height:30px;
-            text-align: left;
-        }
-    }
-    img{
-        width:50vw;
-    }
+#form-container {
+  width: max-content;
+  //   padding-left: 20px;
+  margin: 10vh auto;
+}
+#register-form {
+  //   border-style: solid;
+  //   border-width: 1px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  width: 100%;
+}
+.form-input {
+  width: 100%;
+  border: 0;
+  //   border-radius: 6px;
+  outline: 0;
+  padding: 20px 0px 20px 0px;
+  text-align: left;
+  &:focus {
+    background: darken(#fff, 3%);
+  }
+  &:hover {
+    background: darken(#fff, 3%);
+  }
+}
+#button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  outline: 0;
+  border: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #aba194;
+}
+h3 {
+  text-align: center;
 }
