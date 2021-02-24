@@ -1,11 +1,9 @@
 import UserData from '../model/UserData'
 import jwt from 'jsonwebtoken'
+import CookieData from '../model/CookieData';
 
 async function RegisterMethod(req, res) {
-    // var { firstName, lastName, emailId, password } = req.body.toString();
     var { firstName, lastName, emailId, password } = req.body
-    console.log(req.body)
-
     try {
         var userdata = await UserData.create({
             firstName: firstName,
@@ -13,27 +11,34 @@ async function RegisterMethod(req, res) {
             email: emailId,
             password: password
         });
-        var token = createCookie(userdata._id)
-        res.cookie('jwt', token, { httpOnly: true })
-        res.status(201).send({ user: userdata._id })
+        var token = createCookie(userdata._id) //this value is jwt => token created
+        res.cookie('jwt', token, { httpOnly: true }) // add same site
 
+        try {
+            var cookiedata = await CookieData.create({
+                id: userdata._id,
+                cookie_value: token
+            })
+            console.log("Cookie is stored successfully")
+        } catch (err) {
+            console.log(err)
+        }
+
+        res.status(201).send({ user: userdata._id })
     } catch (err) {
         var errors = handleError(err)
-        console.log(errors)
         res.status(401).send(errors)
     }
 }
 
 function handleError(err) {
-    // console.log(err.message, err.code)
-
+    // console.log(err.message,err.code)
     var errors = {
         firstName: '',
         lastName: '',
         email: '',
         password: ''
     }
-
     // registerdata validation error
     if (err.message.includes("userdata validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {

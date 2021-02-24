@@ -23,10 +23,7 @@ export default class Navbar extends Component {
               <Link to='/register'>Register</Link>
             </li>
             <li>
-              <Link to='/'>Sign In</Link>
-            </li>
-            <li>
-              <Link to='/shelf'>Shelf</Link>
+              <Link to='/login'>Sign In</Link>
             </li>
           </ul>
         </nav>

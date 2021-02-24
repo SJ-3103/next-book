@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
 import Register from './Register'
+import Login from './LogIn'
 // import BookDetail from './BookDetail'
 
 export default class App extends Component {
@@ -13,7 +14,7 @@ export default class App extends Component {
         <Route exact path='/' component={Home}></Route>
         <Route path='/about' component={About}></Route>
         <Route path='/register' component={Register}></Route>
-        {/* <Route path='/bd' component={BookDetail}></Route> */}
+        <Route path='/login' component={Login}></Route>
       </Switch>
     )
   }

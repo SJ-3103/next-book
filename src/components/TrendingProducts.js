@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Animated } from 'react-animated-css'
+// import { Animated } from 'react-animated-css'
 import '../components/productMain.scss'
 import book1 from '../images/book1.jpg'
 
@@ -111,12 +111,7 @@ class BookBlock extends Component {
   }
   render() {
     return (
-      <Animated
-        animationIn='slideInRight'
-        animationOut='slideInLeft'
-        animationInDuration={1000}
-        animationOutDuration={1000}
-        isVisible={true}
+      <div
         className={this.state.td_book}
         style={this.extra_css}
       >
@@ -124,7 +119,7 @@ class BookBlock extends Component {
         <h3>{this.state.bookTitle}</h3>
         <h4>{this.state.bookAuthor}</h4>
         <p>Book Rating : {this.state.bookRating}</p>
-      </Animated>
+      </div>
     )
   }
 }
