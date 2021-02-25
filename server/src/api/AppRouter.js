@@ -5,10 +5,11 @@ import RegisterMethod from '../controllers/RegisterMethod'
 import LoginMethod from '../controllers/LoginMethod'
 import LogOutMethod from '../controllers/LogOutMethod'
 
-import HandleTrending from '../controllers/HandleTrending'
-import HandleBest from '../controllers/HandleBest'
-import HandleNew from '../controllers/HandleNew'
-import AddData from '../controllers/AddData'
+// 
+import MostRatedBooks from '../controllers/MostRatedBooks'
+import InsertNewBooks from '../controllers/InsertNewBooks'
+import InsertBestBooks from '../controllers/InsertBestBooks'
+// 
 
 var router = Router()
 
@@ -24,12 +25,10 @@ router.post('/api/login', jsonParser, LoginMethod)
 
 router.get('/api/logout', LogOutMethod)
 
-router.post('/api/addData', AddData)
-
-router.get('/api/get/trending', HandleTrending)
-
-router.get('/api/get/bestselling', HandleBest)
-
-router.get('/api/get/newarrivals', HandleNew)
+// 
+router.get('/insert/books/most/rated', MostRatedBooks)
+router.get('/insert/books/new/books', InsertNewBooks)
+router.get('/insert/books/best/books', InsertBestBooks)
+// 
 
 export default router
