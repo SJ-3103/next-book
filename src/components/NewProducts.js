@@ -1,28 +1,87 @@
 import React, { Component } from 'react'
-import { Animated } from 'react-animated-css'
 import '../components/productMain.scss'
-import book1 from '../images/book1.jpg'
+import BookBlock from '../components/blocks/BookBlock'
 
 export default class NewProducts extends Component {
   constructor(props) {
     super(props)
     this.state = {
       arr: [],
+      JSONData: [
+        {
+          bookId: 1,
+          title: 'Name 1',
+          author: 'Author 1',
+          goodreads_rating: 1,
+        },
+        {
+          bookId: 2,
+          title: 'Name 2',
+          author: 'Author 2',
+          goodreads_rating: 2,
+        },
+        {
+          bookId: 3,
+          title: 'Name 3',
+          author: 'Author 3',
+          goodreads_rating: 3,
+        },
+        {
+          bookId: 4,
+          title: 'Name 4',
+          author: 'Author 4',
+          goodreads_rating: 4,
+        },
+        {
+          bookId: 5,
+          title: 'Name 5',
+          author: 'Author 5',
+          goodreads_rating: 5,
+        },
+        {
+          bookId: 6,
+          title: 'Name 6',
+          author: 'Author 6',
+          goodreads_rating: 6,
+        },
+        {
+          bookId: 7,
+          title: 'Name 7',
+          author: 'Author 7',
+          goodreads_rating: 7,
+        },
+        {
+          bookId: 8,
+          title: 'Name 8',
+          author: 'Author 8',
+          goodreads_rating: 8,
+        },
+        {
+          bookId: 9,
+          title: 'Name 9',
+          author: 'Author 9',
+          goodreads_rating: 9,
+        },
+        {
+          bookId: 10,
+          title: 'Name 10',
+          author: 'Author 10',
+          goodreads_rating: 10,
+        }
+      ],
       class_name: 'np_book',
     }
     this.populate_array()
   }
 
   populate_array = () => {
-    let props = this.props.values_for_bookblocks
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 0; i < this.state.JSONData.length; i++) {
       this.state.arr.push(
         <BookBlock
           key={i}
-          bookId={props[i]['bookId']}
-          bookTitle={props[i]['book_title']}
-          bookAuther={props[i]['book_auther']}
-          bookRating={props[i]['book_rating']}
+          title={this.state.JSONData[i]['title']}
+          author={this.state.JSONData[i]['author']}
+          goodreads_rating={this.state.JSONData[i]['goodreads_rating']}
           class_name={this.state.class_name}
         />
       )
@@ -90,41 +149,6 @@ export default class NewProducts extends Component {
           {this.state.arr}
         </div>
       </div>
-    )
-  }
-}
-
-class BookBlock extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      bookId: this.props.bookId,
-      bookTitle: this.props.bookTitle,
-      bookAuthor: this.props.bookAuther,
-      bookURL: book1,
-      bookRating: this.props.bookRating,
-      td_book: this.props.class_name,
-    }
-  }
-  extra_css = {
-    display: 'flex',
-  }
-  render() {
-    return (
-      <Animated
-        animationIn='slideInRight'
-        animationOut='slideInLeft'
-        animationInDuration={1000}
-        animationOutDuration={1000}
-        isVisible={true}
-        className={this.state.td_book}
-        style={this.extra_css}
-      >
-        <img alt='imagcia' src={this.state.bookURL} />
-        <h3>{this.state.bookTitle}</h3>
-        <h4>{this.state.bookAuthor}</h4>
-        <p>Book Rating : {this.state.bookRating}</p>
-      </Animated>
     )
   }
 }

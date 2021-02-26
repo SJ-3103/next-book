@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import './register.scss'
 import axios from 'axios'
-// import NavBar from './components/Navbar'
 
 export default class Login extends Component {
     constructor(props) {
@@ -52,26 +51,26 @@ export default class Login extends Component {
     }
 
     componentDidMount() {
-        axios.get('/check')
-            .then((response) => {
-                console.log(response.data.msg) // Server is working
-            })
-            .catch((errors) => {
-                console.log(errors.message)
-                if (errors.message.includes('status code 500')) {
-                    console.log('Backend Server is closed')
-                    this.setState({
-                        redirect: '/'
-                    })
-                }
-            })
+        // axios.get('/check')
+        //     .then((response) => {
+        //         console.log(response.data.msg) // Server is working
+        //     })
+        //     .catch((errors) => {
+        //         console.log(errors.message)
+        //         if (errors.message.includes('status code 500')) {
+        //             console.log('Backend Server is closed')
+        //             this.setState({
+        //                 redirect: '/'
+        //             })
+        //         }
+        //     })
 
-        console.log(document.cookie)
+        // console.log(document.cookie)
     }
     render() {
-        // if (this.state.redirect) {
-        //     return <Redirect to={this.state.redirect} />
-        // }
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div className='body-c'>
                 <div id='form-container'>
@@ -97,9 +96,7 @@ export default class Login extends Component {
                         <p id='errors'>{this.state.errors.password}</p>
 
                         {/* for register button */}
-                        <button id='button' type='submit' onClick={this.handleSubmit}>
-                            Login
-            </button>
+                        <button id='button' type='submit' onClick={this.handleSubmit}>Login</button>
                     </form>
 
                     <h4>Doesn't have an account? Sign up here </h4>

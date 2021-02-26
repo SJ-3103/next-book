@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import './register.scss'
 import axios from 'axios'
-// import NavBar from './components/Navbar'
 
 export default class Register extends Component {
   constructor(props) {
@@ -67,20 +66,23 @@ export default class Register extends Component {
   }
 
   componentDidMount() {
-    axios.get('/check')
-      .then((response) => {
-        console.log(response.data.msg) // Server is working
-      })
-      .catch((errors) => {
-        console.log(errors.message)
-        if (errors.message.includes('status code 500')) {
-          console.log('Backend Server is closed')
-          this.setState({
-            redirect: '/'
-          })
-        }
-      })
+
+    // axios.get('/check')
+    //   .then((response) => {
+    //     console.log(response.data.msg) // Server is working
+    //   })
+    //   .catch((errors) => {
+    //     console.log(errors.message)
+    //     if (errors.message.includes('status code 500')) {
+    //       console.log('Backend Server is closed')
+    //       this.setState({
+    //         redirect: '/'
+    //       })
+    //     }
+    //   })
+
   }
+
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />

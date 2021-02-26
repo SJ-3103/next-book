@@ -5,7 +5,7 @@ import Home from './Home'
 import About from './About'
 import Register from './Register'
 import Login from './LogIn'
-// import BookDetail from './BookDetail'
+import BookDetail from './BookDetail'
 
 export default class App extends Component {
   render() {
@@ -15,6 +15,7 @@ export default class App extends Component {
         <Route path='/about' component={About}></Route>
         <Route path='/register' component={Register}></Route>
         <Route path='/login' component={Login}></Route>
+        <Route path='/dt' component={BookDetail}></Route>
       </Switch>
     )
   }
