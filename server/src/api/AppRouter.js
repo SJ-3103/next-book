@@ -6,13 +6,15 @@ import LoginMethod from '../controllers/LoginMethod'
 import LogOutMethod from '../controllers/LogOutMethod'
 
 // 
-import SendBooks from '../controllers/SendBooks'
+import SendBooks from '../controllers/get books/SendBooks'
+import ListDetail from '../controllers/get books/ListDetail'
+import GetDetails from '../controllers/get books/GetDetails'
 // 
 
 // 
-import MostRatedBooks from '../controllers/MostRatedBooks'
-import InsertNewBooks from '../controllers/InsertNewBooks'
-import InsertBestBooks from '../controllers/InsertBestBooks'
+import MostRatedBooks from '../controllers/insert data/MostRatedBooks'
+import InsertNewBooks from '../controllers/insert data/InsertNewBooks'
+import InsertBestBooks from '../controllers/insert data/InsertBestBooks'
 // 
 
 var router = Router()
@@ -25,6 +27,8 @@ router.get('/check', (req, res) => {
 
 // 
 router.get('/api/get/books', jsonParser, SendBooks)
+router.get('/api/get/list', jsonParser, ListDetail)
+router.get('/api/get/details', jsonParser, GetDetails)
 // 
 
 router.post('/api/register', jsonParser, RegisterMethod)

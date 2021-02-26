@@ -1,5 +1,4 @@
-import NewBooks from '../model/NewBooks'
-
+import NewBooks from '../../model/Book Models/NewBooks'
 async function InsertNewBooks(req, res) {
     var new_books = [
         {
@@ -91,7 +90,7 @@ async function InsertNewBooks(req, res) {
             publication_year: 2006
         },
         {
-            title: "The Hunger Games ",
+            title: "The Hunger Games",
             small_title: "The Hunger Games #1",
             cover_url: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg",
             author: "Suzanne Collins",

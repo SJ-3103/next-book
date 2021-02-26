@@ -1,4 +1,4 @@
-import MostRated from '../model/MostRated'
+import MostRated from '../../model/Book Models/MostRated'
 async function MostRatedBooks(req, res) {
 
     var most_rated_books = [

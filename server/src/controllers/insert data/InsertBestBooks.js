@@ -1,8 +1,8 @@
-import BestSelling from '../model/BestSelling'
+import BestSelling from '../../model/Book Models/BestSelling'
 async function InsertBestBooks(req, res) {
     var best_books = [
         {
-            title: "The Hunger Games ",
+            title: "The Hunger Games",
             small_title: "The Hunger Games #1",
             cover_url: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg",
             author: "Suzanne Collins",
