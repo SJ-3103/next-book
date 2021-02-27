@@ -10,34 +10,35 @@ async function LoginMethod(req, res) {
         if (user) {
             var check_password = await bcrypt.compare(password, user.password) // compares password
             if (check_password) {
-
-                var token = createCookie(user._id)
-                res.cookie('jwt', token, { httpOnly: true }) //add same site
-                try {
-                    var cookie_data = await CookieData.create({
-                        id: user._id,
-                        cookie_value: token
-                    })
-                    console.log('Cookie is stored', cookie_data.cookie_value)
-                } catch (err) {
-                    // console.log('from cookie database', err)
-                    if (err.code === 11000) {
-                        // throw Error('User already logged in')
-                        res.status(400).json({ msg: 'You are already logged in' })
-                    }
+                let cookie_db_obj = await CookieData.findOne({ id: user.id })
+                let cookie_from_db = "jwt=" + cookie_db_obj.cookie_value
+                if (req.headers.cookie === cookie_from_db) {
+                    res.status(400).json({ msg: 'You are already logged in' })
                 }
-                res.status(200).json({ user: user._id, msg: 'You are logged in' })
-
+                else {
+                    var token = createCookie(user._id)
+                    res.cookie('jwt', token, { httpOnly: true }) //add same site
+                    try {
+                        var cookie_data = await CookieData.create({
+                            id: user._id,
+                            cookie_value: token
+                        })
+                    }
+                    catch (err) {
+                        console.log(`DB Error occured + ${err.message}`)
+                    }
+                    res.status(200).json({ user: user._id, msg: 'Login Successful' })
+                }
             } else {
                 throw Error('Password is incorrect')
             }
         } else {
-            throw Error('Email does not exists')
+            throw Error('User does not exist')
         }
     }
     catch (err) {
-        console.log(err)
-        res.status(400).json({ msg: false })
+        console.log(err.message)
+        res.status(400).json({ msg: "DB error" })
     }
 }
 

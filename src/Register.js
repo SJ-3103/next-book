@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import './register.scss'
 import axios from 'axios'
+import Navbar from './components/Navbar'
 
 export default class Register extends Component {
   constructor(props) {
@@ -67,19 +68,22 @@ export default class Register extends Component {
 
   componentDidMount() {
 
-    // axios.get('/check')
-    //   .then((response) => {
-    //     console.log(response.data.msg) // Server is working
-    //   })
-    //   .catch((errors) => {
-    //     console.log(errors.message)
-    //     if (errors.message.includes('status code 500')) {
-    //       console.log('Backend Server is closed')
-    //       this.setState({
-    //         redirect: '/'
-    //       })
-    //     }
-    //   })
+    axios.get('/check')
+      .then((response) => {
+        console.log(response.data.msg) // Server is working
+      })
+      .catch((errors) => {
+        console.log(errors.message)
+        if (errors.message.includes('status code 500')) {
+          console.log('Backend Server is closed')
+          this.setState({
+            redirect: '/'
+          })
+        }
+      })
+    axios.get('/check/login', { withCredentials: true })
+      .then(response => console.log(response))
+      .catch(errors => console.log(errors))
 
   }
 
@@ -89,6 +93,7 @@ export default class Register extends Component {
     }
     return (
       <div className='body-c'>
+        <Navbar />
         <div id='form-container'>
           <h3>Register</h3>
           <form id='register-form' onSubmit={this.handleSubmit}>

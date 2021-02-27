@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import './register.scss'
 import axios from 'axios'
-
+import Navbar from './components/Navbar'
 export default class Login extends Component {
     constructor(props) {
         super(props)
@@ -41,7 +41,7 @@ export default class Login extends Component {
         axios.post('/api/login', {
             emailId: this.state.email,
             password: this.state.password
-        })
+        }, { withCredentials: true })
             .then((response) => {
                 console.log(response)
             })
@@ -51,21 +51,23 @@ export default class Login extends Component {
     }
 
     componentDidMount() {
-        // axios.get('/check')
-        //     .then((response) => {
-        //         console.log(response.data.msg) // Server is working
-        //     })
-        //     .catch((errors) => {
-        //         console.log(errors.message)
-        //         if (errors.message.includes('status code 500')) {
-        //             console.log('Backend Server is closed')
-        //             this.setState({
-        //                 redirect: '/'
-        //             })
-        //         }
-        //     })
+        axios.get('/check')
+            .then((response) => {
+                console.log(response.data.msg) // Server is working
+            })
+            .catch((errors) => {
+                console.log(errors.message)
+                if (errors.message.includes('status code 500')) {
+                    console.log('Backend Server is closed')
+                    this.setState({
+                        redirect: '/'
+                    })
+                }
+            })
+        axios.get('/check/login', { withCredentials: true })
+            .then(response => console.log(response))
+            .catch(errors => console.log(errors))
 
-        // console.log(document.cookie)
     }
     render() {
         if (this.state.redirect) {
@@ -73,6 +75,7 @@ export default class Login extends Component {
         }
         return (
             <div className='body-c'>
+                <Navbar />
                 <div id='form-container'>
                     <h3>Login</h3>
                     <form id='register-form' onSubmit={this.handleSubmit}>
