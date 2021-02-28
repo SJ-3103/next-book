@@ -51,19 +51,19 @@ export default class Login extends Component {
     }
 
     componentDidMount() {
-        axios.get('/check')
-            .then((response) => {
-                console.log(response.data.msg) // Server is working
-            })
-            .catch((errors) => {
-                console.log(errors.message)
-                if (errors.message.includes('status code 500')) {
-                    console.log('Backend Server is closed')
-                    this.setState({
-                        redirect: '/'
-                    })
-                }
-            })
+        // axios.get('/check')
+        //     .then((response) => {
+        //         console.log(response.data.msg) // Server is working
+        //     })
+        //     .catch((errors) => {
+        //         console.log(errors.message)
+        //         if (errors.message.includes('status code 500')) {
+        //             console.log('Backend Server is closed')
+        //             this.setState({
+        //                 redirect: '/'
+        //             })
+        //         }
+        //     })
         axios.get('/check/login', { withCredentials: true })
             .then(response => console.log(response))
             .catch(errors => console.log(errors))

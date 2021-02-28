@@ -33,14 +33,19 @@ router.get("/api/get/details", GetDetails);
 router.post("/api/register", jsonParser, RegisterMethod);
 router.post("/api/login", jsonParser, LoginMethod);
 router.get("/api/logout", LogOutMethod);
+
 router.get('/check/login', async (req, res) => {
   if (req.headers.cookie) {
-    let cookie_from_client = req.headers.cookie.slice(3)
+
+    let cookie_from_client = req.headers.cookie.slice(4)
+
     let cookie_from_database = await CookieData.find({ cookie_value: cookie_from_client })
-    if (cookie_from_database) {
+
+    if (cookie_from_database.length > 0) {
       res.status(200).json({ msg: 'You are already logged in' })
       return
     }
+
   }
 
   res.cookie('jwt', "", { httpOnly: true })

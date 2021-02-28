@@ -1,8 +1,34 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './navbar.scss'
+import axios from "axios"
 
 export default class Navbar extends Component {
+
+  state = {
+    isLoggedIn: false
+  }
+
+  componentDidMount = () => {
+    axios.get('/check/login', { withCredentials: true })
+      .then((data) => {
+        if (data.status === 200) {
+          this.setState({
+            isLoggedIn: true
+          })
+        }
+      })
+      .catch(errors => console.log(errors))
+  }
+
+  handleLogout = async () => {
+    await axios.get("/api/logout").then((data) => {
+      this.setState({
+        isLoggedIn: false
+      })
+    }).catch(errors => console.log(errors))
+  }
+
   render() {
     return (
       <header>
@@ -22,9 +48,9 @@ export default class Navbar extends Component {
             <li>
               <Link to='/register'>Register</Link>
             </li>
-            <li>
+            {!this.state.isLoggedIn ? <li>
               <Link to='/login'>Sign In</Link>
-            </li>
+            </li> : <li onClick={this.handleLogout}><a>Logout</a></li>}
           </ul>
         </nav>
       </header>

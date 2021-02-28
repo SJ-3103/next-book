@@ -10,7 +10,7 @@ async function LoginMethod(req, res) {
         if (user) {
             var check_password = await bcrypt.compare(password, user.password) // compares password
             if (check_password) {
-                let cookie_db_obj = await CookieData.findOne({ id: user.id })
+                let cookie_db_obj = await CookieData.find({ id: user._id })
                 let cookie_from_db = "jwt=" + cookie_db_obj.cookie_value
                 if (req.headers.cookie === cookie_from_db) {
                     res.status(400).json({ msg: 'You are already logged in' })
