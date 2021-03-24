@@ -4,9 +4,6 @@
   "description": "Book Recommendation Website",
   "author": "Shubham Jain",
   "dependencies": {
-    "@babel/cli": "^7.12.17",
-    "@babel/core": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -18,12 +15,10 @@
     "mongoose": "^5.11.17",
     "morgan": "^1.10.0",
     "node-sass": "^5.0.0",
-    "npm-run-all": "^4.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "rimraf": "^3.0.2",
     "scripts": "^0.1.0",
     "validator": "^13.5.2"
   },
@@ -32,12 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "transpile-bd": "babel server/src/ --out-dir dist-server/",
-    "remove-bd": "rimraf dist-server",
-    "serve-bd": "nodemon dist-server",
-    "handle-bd": "node dist-server/index.js",
-    "convert-this-bd": "npm-run-all remove-bd transpile-bd handle-bd",
-    "start-bd": "npm-run-all remove-bd transpile-bd serve-bd"
+    "start-bd": "nodemon server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,18 +42,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "10"
-          }
-        }
-      ]
     ]
   },
   "proxy": "http://localhost:4000"
