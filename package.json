@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "dev-bd": "nodemon server/index.js",
     "prod-bd": "node server/index.js",
-    "start": "run-p dev dev-bd"
+    "start": "npm run dev-bd"
   },
   "eslintConfig": {
     "extends": "react-app"
