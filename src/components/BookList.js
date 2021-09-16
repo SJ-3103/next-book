@@ -13,8 +13,8 @@ export default class BookList extends Component {
       start_index: 0,
       slide_size: 6,
     };
+    this.changeSlides=this.changeSlides.bind(this)
   }
-
   changeSlides = (step, n) => {
     let indexObj = {
       start_index: this.state.start_index,
@@ -70,26 +70,30 @@ export default class BookList extends Component {
             &raquo;
           </button>
           {!this.state.loading ? (
-            this.state.arr.data
-              .slice(
-                this.state.start_index,
-                this.state.start_index + this.state.slide_size
-              )
-              .map((el) => {
-                return (
-                  <BookBlock
-                    key={el._id}
-                    id={el._id}
-                    title={el.title}
-                    author={el.author}
-                    cover_url={el.cover_url}
-                    goodreads_rating={el.goodreads_rating}
-                    book_section={this.props.name}
-                  />
-                );
-              })
+            this.state.arr.data ? (
+              this.state.arr.data
+                .slice(
+                  this.state.start_index,
+                  this.state.start_index + this.state.slide_size
+                )
+                .map((el) => {
+                  return (
+                    <BookBlock
+                      key={el._id}
+                      id={el._id}
+                      title={el.title}
+                      author={el.author}
+                      cover_url={el.cover_url}
+                      goodreads_rating={el.goodreads_rating}
+                      book_section={this.props.name}
+                    />
+                  );
+                })
+            ):(
+              <>Loading....</>
+            )
           ) : (
-            <></>
+            <>Loading....</>
           )}
         </div>
       </div>

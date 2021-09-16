@@ -11,6 +11,8 @@ var PORT = 4000;
 
 var db = new Database();
 
+app.use(express.static(`${__dirname}/../build`));
+
 app.use(logger("dev"));
 
 app.use(express.json());
