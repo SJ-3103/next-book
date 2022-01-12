@@ -1,69 +1,136 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect,Link } from 'react-router-dom'
 import './styles/register.scss'
 import axios from 'axios'
 import Navbar from './components/Navbar'
+import Footer from "./components/Footer"
 
 export default class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
       redirect: null,
-      email: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      errors: {
-        email: '',
-        password: '',
-        lastName: '',
-        firstName: '',
-      },
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      email_error: "",
+      password_error: "",
+      lastName_error: "",
+      firstName_error: ""
+      
     }
   }
 
-  handleFirstName = (event) => {
+  handleInputChange = (event) => {
+    const value = event.target.value
+    const name = event.target.name
     this.setState({
-      firstName: event.target.value,
+      [name]: value
     })
   }
 
-  handleLastName = (event) => {
-    this.setState({
-      lastName: event.target.value,
-    })
+  handleErrors = async() => {
+    // check first name
+    if(this.state.firstName === "") {
+      this.setState({
+        firstName_error: "First name can't be empty"
+      })
+    }
+    else if(this.state.firstName<=4) {
+      this.setState({
+        firstName_error: "First name must have atleast 5 letters."
+      })
+    }
+    else{
+      this.setState({
+        firstName_error: "No error"
+      })
+    }
+
+    // check last name
+    if(this.state.lastName === '') {
+      this.setState({
+        lastName_error: "Last name can't be empty"
+      })
+    }
+    else if(this.state.lastName<=4) {
+      this.setState({
+        lastName_error: "Last name must have atleast 5 letters."
+      })
+    }
+    else{
+      this.setState({
+        lastName_error: "No error"
+      })
+    }
+
+    // check email
+    if(this.state.email === '') {
+      this.setState({
+        email_error: "Email can't be empty"
+      })
+    }
+    else if(!new RegExp( /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(this.state.email)) {
+      this.setState({
+        email_error: "Enter a valid email."
+      })
+    }
+    else{
+      this.setState({
+        email_error: "No error"
+      })
+    }
+
+    // check password
+    if(this.state.password === '') {
+      this.setState({
+        password_error: "Password can't be empty"
+      })
+    }
+    else if(!new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(this.state.password)) {
+      this.setState({
+        password_error: "Enter a valid password."
+      })
+    }
+    else{
+      this.setState({
+        password_error: "No error"
+      })
+    }
   }
 
-  handleEmail = (event) => {
-    this.setState({
-      email: event.target.value,
-    })
-  }
-
-  handlePassword = (event) => {
-    this.setState({
-      password: event.target.value,
-    })
-  }
-
-  handleErrors = (errors) => {
-    // to extract errors in the state and apply forEach on it
-    console.log(errors)
+  register = async()=> {
+    axios
+      .post(
+        "/api/register",{
+          first_name: this.state.firstName,
+          last_name: this.state.lastName,
+          email_id: this.state.email,
+          password: this.state.password
+        },{ withCredentials: true }
+      )
+      .then((response) => {
+        // console.log(response.data);
+        console.log(response)
+        // this.setState({
+        //   redirect: "/"
+        // })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   handleSubmit = async (event) => {
     event.preventDefault()
-
-    // to be completed
-    axios.post('/api/register', {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      emailId: this.state.email,
-      password: this.state.password
-    })
-      .catch((err) => {
-        console.log(err)
-      })
+    await this.handleErrors()
+    
+    if(this.state.firstName_error === "No error" && this.state.lastName_error === "No error" && this.state.email_error === "No error" && this.state.password_error === "No error") {
+      console.log("Format ok")
+      await this.register()
+    }
+    
   }
 
   componentDidMount() {
@@ -76,9 +143,9 @@ export default class Register extends Component {
         console.log(errors.message)
         if (errors.message.includes('status code 500')) {
           console.log('Backend Server is closed')
-          this.setState({
-            redirect: '/'
-          })
+          // this.setState({
+          //   redirect: '/'
+          // })
         }
       })
     axios.get('/check/login', { withCredentials: true })
@@ -92,55 +159,74 @@ export default class Register extends Component {
       return <Redirect to={this.state.redirect} />
     }
     return (
-      <div className='body-c'>
+      <div>
         <Navbar />
-        <div id='form-container'>
-          <h3>Register</h3>
-          <form id='register-form' onSubmit={this.handleSubmit}>
-            <input
-              value={this.state.firstName}
-              type='text'
-              onChange={this.handleFirstName}
-              placeholder='Enter First name'
-              className='form-input'
-            />
-            <p id='errors'>{this.state.errors.firstName}</p>
+        <div className="body-c">
 
-            <input
-              value={this.state.lastName}
-              type='text'
-              onChange={this.handleLastName}
-              placeholder='Enter Last name'
-              className='form-input'
-            />
-            <p id='errors'>{this.state.errors.lastName}</p>
+          <div id="form-container">
 
-            <input
-              value={this.state.email}
-              type='text'
-              onChange={this.handleEmail}
-              placeholder='Enter Email'
-              className='form-input'
-            />
-            <p id='errors'>{this.state.errors.email}</p>
+            <form onSubmit={this.handleSubmit}>
+              <h2>Register</h2>
+              
+              <h3>First Name</h3>
+              <input
+                name="firstName"
+                value={this.state.firstName}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter First name"
+                className="form-input"
+              />
+              {this.state.firstName_error !== "No error" ? <p id="errors">{this.state.firstName_error}</p> : <></>}
 
-            <input
-              value={this.state.password}
-              type='text'
-              onChange={this.handlePassword}
-              placeholder='Enter Password'
-              className='form-input'
-            />
-            <p id='errors'>{this.state.errors.password}</p>
+              <h3>Last Name</h3>
+              <input
+                name="lastName"
+                value={this.state.lastName}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Last name"
+                className="form-input"
+              />
+              {this.state.lastName_error !== "No error" ? <p id="errors">{this.state.lastName_error}</p> : <></>}
 
-            {/* for register button */}
-            <button id='button' type='submit' onClick={this.handleSubmit}>
-              Register
-            </button>
-          </form>
+              <h3>Email</h3>
+              <input
+                name="email"
+                value={this.state.email}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Email"
+                className="form-input"
+              />
+              {this.state.email_error !== "No error" ? <p id="errors">{this.state.email_error}</p> : <></>}
 
-          <h4>Already have an account? Sign In here </h4>
+              <h3>Password</h3>
+              <input
+                name="password"
+                value={this.state.password}
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="Enter Password"
+                className="form-input"
+              />
+              {this.state.password_error !== "No error" ? <p id="errors">{this.state.password_error}</p> : <></>}
+
+              {/* for register button */}
+              <button id="button" type="submit" onClick={this.handleSubmit}>
+                Register
+              </button>
+              <h4>
+                Already have an account?{" "}<Link to="/login">Sign In here</Link>
+              </h4>
+            </form>
+
+          </div>
+          
+          <div id="side-image"></div>
+
         </div>
+        <Footer/>
       </div>
     )
   }
