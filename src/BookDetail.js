@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./bookDetails.scss";
+import "./styles/bookDetails.scss";
 import NavBar from "./components/Navbar";
 import axios from "axios";
 export default class BookDetail extends Component {
@@ -41,7 +41,7 @@ export default class BookDetail extends Component {
           </section>
           <section className="authorInfo">
             <div className="dummy_text">
-              {("About" + " " + this.state.book_data?.author).toUpperCase()}
+              {("About " + this.state.book_data?.author).toUpperCase()}
             </div>
             <div className="author_details">
               <img
@@ -76,8 +76,8 @@ class BookData extends Component {
         <p className="small_title">{"(" + small_title + ")"}</p>
         <p className="author_name">by {author}</p>
         <ul>
-          <li>{"Stars" + "  (" + goodreads_rating.$numberDecimal + "/5)"}</li>
-          <li>{"Ratings" + "  (" + total_ratings + ")"}</li>
+          <li>{"Stars (" + goodreads_rating.$numberDecimal + "/5)"}</li>
+          <li>{"Ratings (" + total_ratings + ")"}</li>
         </ul>
         <p id="description">{summary}</p>
       </div>

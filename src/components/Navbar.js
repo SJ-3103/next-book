@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './navbar.scss'
+import '../styles/navbar.scss'
 import axios from "axios"
 
 export default class Navbar extends Component {
@@ -48,9 +48,16 @@ export default class Navbar extends Component {
             <li>
               <Link to='/register'>Register</Link>
             </li>
-            {!this.state.isLoggedIn ? <li>
-              <Link to='/login'>Sign In</Link>
-            </li> : <li onClick={this.handleLogout}><a>Logout</a></li>}
+            {
+              !this.state.isLoggedIn ? 
+              <li>
+                <Link to='/login'>Sign In</Link>
+              </li> 
+              : 
+              <li onClick={this.handleLogout}>
+                <Link to="/">Logout</Link>
+              </li>
+            }
           </ul>
         </nav>
       </header>

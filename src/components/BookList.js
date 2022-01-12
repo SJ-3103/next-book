@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../components/productMain.scss";
+import "../styles/productMain.scss";
 import BookBlock from "./blocks/BookBlock";
 import axios from "axios";
 import { nextSlidesIndex, prevSlidesIndex } from "./utils";
