@@ -7,9 +7,6 @@ var {
   LogOut,
   GetDetails,
   SendBooks,
-  MostRatedBooks,
-  InsertNewBooks,
-  InsertBestBooks,
   CheckLogin
 } = require("../controllers/controller");
 
@@ -29,9 +26,5 @@ router.post("/api/login", jsonParser, Login);
 router.get("/api/logout", LogOut);
 
 router.get('/check/login', CheckLogin)
-
-router.get("/insert/books/most/rated", MostRatedBooks);
-router.get("/insert/books/new/books", InsertNewBooks);
-router.get("/insert/books/best/books", InsertBestBooks);
 
 module.exports = router;

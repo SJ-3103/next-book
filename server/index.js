@@ -5,9 +5,11 @@ var cors = require("cors");
 const Database = require("./Database");
 const router = require("./api/router");
 
+const {port} = require('./config/config');
+
 var app = express();
 
-var PORT = 4000;
+var PORT = port || 4000;
 
 var db = new Database();
 

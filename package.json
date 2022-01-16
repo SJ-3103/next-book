@@ -1,54 +1,23 @@
 {
-  "name": "next-book",
+  "name": "nextnewbook",
   "version": "0.1.0",
   "description": "Book Recommendation Website",
   "author": "Shubham Jain",
+  "main": "server/index.js",
   "dependencies": {
-    "axios": "^0.21.1",
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
-    "caniuse-lite": "^1.0.30001257",
+    "mongoose": "^5.11.17",
+    "morgan": "^1.10.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "body-parser": "^1.19.0",
+    "bcrypt": "^5.0.0",
     "debug": "^4.3.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.17",
-    "morgan": "^1.10.0",
-    "node-sass": "^5.0.0",
-    "npm-run-all": "^4.1.5",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "scripts": "^0.1.0",
-    "serve": "^12.0.1",
-    "validator": "^13.5.2"
+    "validator": "^13.5.2",
+    "dotenv": "^8.2.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "prod": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev-bd": "nodemon server/index.js",
-    "prod-bd": "node server/index.js",
-    "start": "npm run dev-bd"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "http://localhost:4000"
+    "start": "node server/index.js"
+  }
 }

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-var server = '127.0.0.1:27017'
-var database = 'ecom-database'
+const {mongo_url} = require("./config/config");
+var MONGO_URL = mongo_url;
 
 class Database {
   mongodbConnect() {
     mongoose
-      .connect(`mongodb://${server}/${database}`, {
+      .connect(MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
@@ -14,6 +14,7 @@ class Database {
         console.log('Connection to database is successfull')
       })
       .catch((err) => {
+        console.log(err)
         console.error('Database Connection Error')
       })
   }
