@@ -13,7 +13,7 @@ var PORT = port || 4000;
 
 var db = new Database();
 
-app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../react-ui/build`));
 
 app.use(logger("dev"));
 
