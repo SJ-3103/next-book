@@ -32,32 +32,39 @@ export default class Navbar extends Component {
   render() {
     return (
       <header>
-        <nav className='navbar'>
-          <ul id='menu-left'>
+        <nav className="navbar">
+          <ul id="menu-left">
             <li>
-              <Link to='/'>Logo</Link>
+              <Link to="/">Logo</Link>
             </li>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to='/about'>About Us</Link>
+              <Link to="/about">About</Link>
             </li>
           </ul>
-          <ul id='menu-right'>
-            <li>
-              <Link to='/register'>Register</Link>
-            </li>
-            {
-              !this.state.isLoggedIn ? 
-              <li>
-                <Link to='/login'>Sign In</Link>
-              </li> 
-              : 
-              <li onClick={this.handleLogout}>
-                <Link to="/">Logout</Link>
-              </li>
-            }
+          <p>The Book Recommender Website</p>
+          <ul id="menu-right">
+            {!this.state.isLoggedIn ? (
+              <div>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+                <li>
+                  <Link to="/login">Sign In</Link>
+                </li>
+              </div>
+            ) : (
+              <div id="username">
+                <li>
+                  {this.state.username}
+                </li>
+                <li onClick={this.handleLogout}>
+                  Logout
+                </li>
+              </div> 
+            )}
           </ul>
         </nav>
       </header>
